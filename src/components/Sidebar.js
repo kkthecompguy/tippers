@@ -1,6 +1,31 @@
-import React from "react";
+import React,{  useState } from "react";
+import { useNavigate } from "react-router";
+import SidebarModal from "./SidebarModal";
+
+const settingsOptions = [
+  {
+    link: '/users',
+    name: 'Users'
+  },
+  {
+    link: '/roles',
+    name: 'Roles',
+  },
+  {
+    link: '/permissions',
+    name: 'Permissions',
+  }
+]
 
 const Sidebar = () => {
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleShowModal = () => setShowModal(!showModal);
+
+  const onClickLink = (link) => navigate(link);
+
+
   return (
     <React.Fragment>
       <input type="checkbox" id="nav-toggle" />
@@ -12,26 +37,12 @@ const Sidebar = () => {
         <div className="sidebar-menu">
           <ul>
             <li>
-              <a href="#!" className="active"><span className="las la-igloo"></span><span>Home</span></a>
+              <a href="/dashboard" className="active"><span className="las la-igloo"></span><span>Home</span></a>
             </li>
             <li>
-              <a href="#!" className=""><span className="las la-clipboard-list"></span><span>Issues</span></a>
-            </li> 
-            <li>
-              <a href="#!" className=""><span className="las la-users"></span><span>Users</span></a>
+              <span onClick={toggleShowModal} className="override-span"><span className="las la-cog px-2"></span><span>Settings</span></span>
+              { showModal && <SidebarModal options={settingsOptions} onClickLink={onClickLink} />}
             </li>
-            <li>
-              <a href="#!" className=""><span className="las la-user"></span><span>Add User</span></a>
-            </li>
-            <li>
-              <a href="#!" className=""><span className="las la-user"></span><span>User Roles</span></a>
-            </li>
-            <li>
-              <a href="#!" className=""><span className="las la-clipboard-list"></span><span>Category</span></a>
-            </li>
-            <li>
-              <a href="#!" className=""><span className="las la-user-circle"></span><span>Accounts</span></a>
-            </li> 
           </ul>
         </div>
       </div>

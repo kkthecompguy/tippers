@@ -1,0 +1,40 @@
+POST https://ussd.tenwebtechnologies.com/api/patatip/login
+Content-Type: application/json
+
+{
+  "email": "willsmith@gmail.com",
+  "password": "password"
+}
+
+###
+POST https://ussd.tenwebtechnologies.com/api/patatip/signup
+Content-Type: application/json
+
+{
+  "email": "willsmith@gmail.com",
+  "password": "password",
+  "first_name": "Will",
+  "last_name": "Smith",
+  "mobile": "0711121314",
+  "idno": "12345678",
+  "role": "admin",
+  "permission": "['CREATEORGADMIN', 'VIEWTRANSACTION']",
+  "password_confirmation": "password"
+}
+
+###
+GET https://ussd.tenwebtechnologies.com/api/patatip/permission
+Content-Type: application/json
+Authorization: Bearer 136|x2elG6Gtq1xV2KZNVCkkvFsBmBzm1LWswQP1TsDV
+
+
+###
+GET https://ussd.tenwebtechnologies.com/api/patatip/users
+Content-Type: application/json
+Authorization: Bearer 136|x2elG6Gtq1xV2KZNVCkkvFsBmBzm1LWswQP1TsDV
+
+
+###
+GET https://ussd.tenwebtechnologies.com/api/patatip/roles
+Content-Type: application/json
+Authorization: Bearer 136|x2elG6Gtq1xV2KZNVCkkvFsBmBzm1LWswQP1TsDV

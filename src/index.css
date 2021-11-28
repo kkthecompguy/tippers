@@ -29,7 +29,7 @@ li {
 }
 
 .sidebar {
-  width: 300px;
+  width: 200px;
   position: fixed;
   height: 100%;
   top: 0;
@@ -103,6 +103,11 @@ li {
   display: none;
 }
 
+#nav-toggle:checked + .sidebar .sidebar-brand h3 span:last-child,
+#nav-toggle:checked + .sidebar li .override-span span:last-child {
+  display: none;
+}
+
 #nav-toggle:checked ~.main-content {
   margin-left: 70px;
 }
@@ -112,9 +117,13 @@ li {
   left: 70px;
 }
 
+#nav-toggle:checked + .sidebar .sidebar-modal {
+  display: none;
+}
+
 .main-content  {
   transition: margin-left 300ms;
-  margin-left: 300px;
+  margin-left: 200px;
 }
 
 header {
@@ -125,8 +134,8 @@ header {
   padding: 1rem 1.5rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   position: fixed;
-  left: 300px;
-  width: calc(100% - 300px);
+  left: 200px;
+  width: calc(100% - 200px);
   top: 0;
   z-index: 100;
   transition: left 300ms;
@@ -166,8 +175,7 @@ header label span {
 
 
 .user-wrapper {
-  display: flex;
-  align-items: center;
+  position: relative;
 }
 
 .user-wrapper img {
@@ -631,6 +639,57 @@ tr td:last-child {
   width: 80%;
 }
 
+.sidebar-modal, .profile-modal {
+  font-size: .8rem;
+  background: #fff;
+  color: gray;
+  border-radius: 5px;
+  box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.25);
+-webkit-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.25);
+}
+
+.sidebar-modal li {
+  padding: .5rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.sidebar-modal li a {
+  color: gray;
+  margin-right: 5px;
+}
+
+.override-span{
+  padding-left: .4rem;
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.header-relative {
+  position: relative;
+}
+
+.profile-modal {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  padding: 1rem;
+}
+
+.profile-modal small {
+  padding: .4rem;
+  cursor: pointer;
+}
+
+.cards-box-shadow {
+  box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.25);
+  -webkit-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.25);
+}
+
 
 @media only screen and (max-width:1200px) {
   .sidebar {
@@ -666,7 +725,7 @@ tr td:last-child {
   }
 
   .sidebar:hover {
-    width: 300px;
+    width: 200px;
     z-index: 200;
   }
   
@@ -695,7 +754,7 @@ tr td:last-child {
     grid-template-columns: 50% 50%;
   }
 
-  upload-text {
+  .upload-text {
     margin-right: 1rem;
   }
 }
@@ -754,12 +813,12 @@ tr td:last-child {
   #nav-toggle:checked + .sidebar {
     left: 0 !important;
     z-index: 100;
-    width: 300px;
+    width: 200px;
     margin-top: 5.3rem;
   }
 
   #nav-toggle:checked +.sidebar {
-    width: 300px;
+    width: 200px;
     z-index: 200;
   }
   

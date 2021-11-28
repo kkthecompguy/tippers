@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-// import { userslogin } from '../../actions/auth';
+import { userslogin } from '../../redux/actions/auth';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    role: 'admini',
     email: '',
     password: '',
   });
   const [errors, setErrors] = useState('');
-  const [remainingAttempt, setRemainingAttempt] = useState(0);
-  // const loading = useSelector(state => state.auth.loading);
-  let loading= false;
+  const loading = useSelector(state => state.auth.loading);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  
 
   const handleChange = e => {
     setFormData(current => {
@@ -22,26 +20,17 @@ const Login = () => {
     });
   }
 
-  const { role, email, password } = formData;
+  const { email, password } = formData;
 
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // const {success, message, remaining} = await dispatch(userslogin(formData));
-    let success = true;
-    let message = 'success'
-    let remaining = 1
-
+    const {success, message} = await dispatch(userslogin(formData));
     if (success) {
       let route = `/dashboard`;
       navigate(route);
     } else {
       setErrors(message);
-      setRemainingAttempt(remaining - 1);
-      setTimeout(() => {
-        setErrors('');
-        setRemainingAttempt(0);
-      }, 5000);
     }
   }
 
@@ -83,9 +72,8 @@ const Login = () => {
                 {errors && <div className="pwd-error text-center mt-2 mb-2">
                   {errors}
                 </div>}
-                { remainingAttempt > 0 && <div className="text-center mt-2 mb-2">{remainingAttempt} attempt remaining</div>}
                 <div className="form-group text-center mt-3 mb-2">
-                  <button type="submit" disabled={loading} className="btn btn-primary text-uppercase custom-label">{loading ? 'logging....' : role === 'superadmin' ? 'Continue' : 'Login'}</button>
+                  <button type="submit" disabled={loading} className="btn btn-primary text-uppercase custom-label">{loading ? 'logging....' : 'Login'}</button>
                 </div>
                 <div className="form-group">
                   <Link to="/forgotpassword" className="custom-label">Forgot Password?</Link>
