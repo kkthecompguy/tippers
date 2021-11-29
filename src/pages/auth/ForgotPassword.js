@@ -19,7 +19,7 @@ const ForgotPassword = () => {
     });
   }
 
-  const { role, email } = formData;
+  const { email } = formData;
 
   const handleSubmit = async e => {
     e.preventDefault();

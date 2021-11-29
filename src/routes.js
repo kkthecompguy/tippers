@@ -7,6 +7,7 @@ import ResetPassword from "./pages/auth/ResetPassword";
 import Permissions from "./pages/roles/Permissions";
 import Roles from "./pages/roles/Roles";
 import UsersList from "./pages/users/Users";
+import CreateUser from "./pages/users/CreateUser";
 
 
 const RoutesPages = () => {
@@ -20,6 +21,7 @@ const RoutesPages = () => {
         <Route path="/permissions" element={<Permissions/>} />
         <Route path="/roles" element={<Roles/>} />
         <Route path="/users" element={<UsersList/>} />
+        <Route path="/adduser" element={<CreateUser/>} />
       </Routes>
     </Router>
   )

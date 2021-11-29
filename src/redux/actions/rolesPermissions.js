@@ -22,7 +22,7 @@ export const createPermission = permission => async (dispatch, getState) => {
 }
 
 
-export const listPermission = permission => async (dispatch, getState) => {
+export const listPermission = () => async (dispatch, getState) => {
   try {
     const { auth: { token } } = getState()
     const config = {

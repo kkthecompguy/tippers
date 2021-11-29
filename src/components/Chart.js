@@ -14,14 +14,6 @@ const data = {
   ],
 };
 
-const options = {
-  scales: {
-    y: {
-      beginAtZero: true
-    }
-  }
-};
-
 const LineChart = () => <Line data={data} />;
 
 export default LineChart; 

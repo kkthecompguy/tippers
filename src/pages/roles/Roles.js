@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
-import { createPermission, listRoles } from '../../redux/actions/rolesPermissions';
+import { createRoles, listRoles } from '../../redux/actions/rolesPermissions';
 import Layout from "../../components/Layout";
 
 
@@ -10,7 +10,6 @@ const Roles  = () => {
   const [role, setRole] = useState('');
   const [roles, setRoles] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState('')
   
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,17 +24,22 @@ const Roles  = () => {
   
   const handleSubmit = async e => {
     e.preventDefault();
-    const success = await dispatch(createPermission({role}));
+    const success = await dispatch(createRoles({role}));
     if (success) {
       Swal.fire({
         icon: "success",
         "title": "success",
-        "text": "Permission created successfully"
+        "text": "Role created successfully"
       });
       setRole('');
-      setErrors('')
+      const roles = await dispatch(listRoles());
+      setRoles(current => roles);
     } else {
-      setErrors('Permission already registered');
+      Swal.fire({
+        icon: "error",
+        "title": "error",
+        "text": "Something went wrong"
+      });
     }
   }
 
@@ -75,7 +79,7 @@ const Roles  = () => {
                   { roles.map((role, index) => (
                     <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{role.role}</td>
+                    <td>{role.name}</td>
                     <td>{role.created_at}</td>
                     <td>{role.updated_at}</td>
                   </tr>

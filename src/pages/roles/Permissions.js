@@ -10,8 +10,6 @@ const Permissions  = () => {
   const [permission, setPermission] = useState('');
   const [permissions, setPermissions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState('')
-  
   const dispatch = useDispatch();
   useEffect(() => {
     setLoading(true);
@@ -33,9 +31,14 @@ const Permissions  = () => {
         "text": "Permission created successfully"
       });
       setPermission('');
-      setErrors('')
+      const perms = await dispatch(listPermission());
+      setPermissions(current => perms);
     } else {
-      setErrors('Permission already registered');
+      Swal.fire({
+        icon: "success",
+        "title": "success",
+        "text": "Something went wrong"
+      });
     }
   }
 
@@ -75,7 +78,7 @@ const Permissions  = () => {
                   { permissions.map((permission, index) => (
                     <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{permission.permission}</td>
+                    <td>{permission.name}</td>
                     <td>{permission.created_at}</td>
                     <td>{permission.updated_at}</td>
                   </tr>

@@ -28,7 +28,7 @@ const ResetPassword = () => {
     });
   }
 
-  const { role, password, password2 } = formData;
+  const { password, password2 } = formData;
 
   const handleSubmit = async e => {
     e.preventDefault();

@@ -690,6 +690,23 @@ tr td:last-child {
   -moz-box-shadow: 10px 10px 27px 0px rgba(0,0,0,0.25);
 }
 
+.form-group-custom-check {
+  display: flex;
+  margin: .8rem 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-group-inline {
+  display: flex;
+  align-items: center;
+}
+
+.form-group-inline label {
+  padding-left: .4rem;
+  padding-right: .8rem;
+}
+
 
 @media only screen and (max-width:1200px) {
   .sidebar {

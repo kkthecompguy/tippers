@@ -5,7 +5,7 @@ const HeaderCards = () => {
     <div className="row mb-4">
       <div className="col-md-3">
         <div className="card card-body cards-box-shadow">
-          <div>Admins</div>
+          <div>Users</div>
           <div>3</div>
         </div>
       </div>

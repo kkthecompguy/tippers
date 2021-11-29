@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 import Layout from "../../components/Layout";
+import { listUsers } from "../../redux/actions/users";
 
 
-let users = [];
+// let users = [];
 
 const UsersList = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const getUsers = async() => {
+      setLoading(true)
+      const res = await dispatch(listUsers());
+      setUsers(current => res);
+      setLoading(false);
+    }
+    getUsers();
+  }, [dispatch])
+
   return (
     <Layout>
       <div className="d-flex justify-content-end flex-end">
-        <button className="btn btn-primary btn-sm">CREATE USER</button>
+        <Link to="/adduser" className="btn btn-primary btn-sm">CREATE USER</Link>
       </div>
       <div className="card-project mt-5">
         <div className="card-bodys">
           <div className="table-responsive">
+            {loading ? 'Loading...' : (
             <table>
               <thead>
                 <tr>
@@ -44,7 +63,7 @@ const UsersList = () => {
                 </tr>
                 )) }
               </tbody>
-            </table>
+            </table>)}
           </div>
         </div>
       </div>

@@ -7,19 +7,24 @@ Content-Type: application/json
 }
 
 ###
-POST https://ussd.tenwebtechnologies.com/api/patatip/signup
+POST https://ussd.tenwebtechnologies.com/api/patatip/users
 Content-Type: application/json
 
 {
-  "email": "willsmith@gmail.com",
-  "password": "password",
-  "first_name": "Will",
-  "last_name": "Smith",
-  "mobile": "0711121314",
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "johndoe113@gmail.com",
+  "mobile": "254711121345",
   "idno": "12345678",
-  "role": "admin",
-  "permission": "['CREATEORGADMIN', 'VIEWTRANSACTION']",
-  "password_confirmation": "password"
+  "role": "ACCOUNTANT",
+  "permission": [
+      "INITIATETRANSACTION",
+      "CREATEUSER",
+      "view-dashboard",
+      "invoice-management"
+  ],
+  "password": "kkbhls9kayl",
+  "password_confirmation": "kkbhls9kayl"
 }
 
 ###
@@ -38,3 +43,12 @@ Authorization: Bearer 136|x2elG6Gtq1xV2KZNVCkkvFsBmBzm1LWswQP1TsDV
 GET https://ussd.tenwebtechnologies.com/api/patatip/roles
 Content-Type: application/json
 Authorization: Bearer 136|x2elG6Gtq1xV2KZNVCkkvFsBmBzm1LWswQP1TsDV
+
+###
+POST https://ussd.tenwebtechnologies.com/api/patatip/permission
+Content-Type: application/json
+Authorization: Bearer 171|1JOr0NS6f4Xtum99I02lkdAsH8kdYKkiqbcaUgcp
+
+{
+  "permission": "CREATEUSER"
+}
