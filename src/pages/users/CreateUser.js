@@ -7,7 +7,8 @@ import { listPermission, listRoles } from "../../redux/actions/rolesPermissions"
 import { createuser } from "../../redux/actions/users";
 import { passwordGenerator, phoneFormatter, removeUndefined } from "../../utils/utils";
 
-let permissionss = ['CREATEUSER', 'VIEWTRANSACTION', 'DELETEUSER', 'DELETEUSER']
+let permissionss = ['CREATEUSER', 'VIEWTRANSACTION', 'DELETEUSER', 'DELETEUSER', 'VIEWDASHBOARD']
+
 
 const CreateUser = () => {
   const [formData, setFormData] = useState({
